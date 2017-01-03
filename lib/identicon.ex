@@ -12,6 +12,11 @@ defmodule Identicon do
     %Identicon.Image{bytes: bytes}
   end
 
+  def mirror_row(row) do
+    [first, second | _tail] = row
+    row ++ [second, first]
+  end
+
   def pick_color(%Identicon.Image{bytes: [red, green, blue | _tail]} = image) do
     %Identicon.Image{image | color: {red, green, blue}}
   end
