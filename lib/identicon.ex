@@ -5,7 +5,9 @@ defmodule Identicon do
   end
 
   def hash_string(input) do
-    :crypto.hash(:md5, input)
+    bytes = :crypto.hash(:md5, input)
     |> :binary.bin_to_list
+
+    %Identicon.Image{bytes: bytes}
   end
 end
